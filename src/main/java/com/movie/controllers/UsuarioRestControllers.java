@@ -55,6 +55,21 @@ public class UsuarioRestControllers {
 		return new ResponseEntity<Usuario>(usuario, HttpStatus.OK);
 	}
 	
+	@PostMapping("/login")
+	public ResponseEntity<?> login(@RequestBody Usuario usuario){
+		System.out.println("-->login"+usuario.getNombre_usuario());
+		System.out.println("-->login"+usuario.getPassword());
+		
+		Usuario usuarioLogin = null;
+		Map<String, Object> response = new HashMap<>();
+		
+		usuarioLogin = usuarioService.login(usuario.getNombre_usuario(), usuario.getPassword());
+		response.put("mensaje", "Usuario logueado correctamente");
+		response.put("data", usuarioLogin);
+		
+		return new ResponseEntity<Map<String, Object>>(response, HttpStatus.OK);
+	}
+	
 	@PostMapping("/usuario")
 	public ResponseEntity<?> create(@RequestBody Usuario usuario){
 		

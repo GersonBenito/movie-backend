@@ -15,4 +15,6 @@ public interface IUsuarioService {
 	
 	//	crear un nuevo usuario
 	public Usuario save(Usuario usuario);
+	
+	public Usuario login(String username, String password);
 }

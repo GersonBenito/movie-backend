@@ -33,4 +33,11 @@ public class UsuarioServiceImplement implements IUsuarioService{
 	public Usuario save(Usuario usuario) {
 		return usuarioDao.save(usuario);
 	}
+
+	@Override
+	@Transactional(readOnly = true)
+	public Usuario login(String username, String password) {
+		
+		return usuarioDao.login(username, password);
+	}
 }
